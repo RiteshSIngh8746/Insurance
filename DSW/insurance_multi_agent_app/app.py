@@ -71,6 +71,7 @@ def detect_fraud(age, claim_amount, policy_coverage, income, incident_type, dela
         import os
 
         # Load model and columns
+        current_dir = os.path.dirname(__file__)
         with open(os.path.join( "fraud_model.pkl"), "rb") as f:
             model = joblib.load(f)
         with open(os.path.join("feature_order.pkl"), "rb") as f:
