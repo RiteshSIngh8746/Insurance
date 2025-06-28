@@ -1,0 +1,51 @@
+/* --- Top horizontal banner with double bottom border --- */
+.top-banner {
+  background-color: #1a73e8;
+  color: white;
+  padding: 1.6rem 2rem;
+  font-size: 32px;
+  font-weight: 700;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 6px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* 👇 Push main content below the fixed header */
+main.stApp {
+  padding-top: 100px !important;
+}
+
+/* 👇 Push sidebar down too */
+section[data-testid="stSidebar"] {
+  margin-top: 100px !important;
+  background-color: #0e1117 !important;
+  color: white !important;
+  padding: 1.5rem;
+  border-right: 1px solid #444;
+}
+
+/* Style sidebar radio buttons */
+.css-1aumxhk {
+  background-color: #1a1c23 !important;
+  padding: 0.5rem 1rem;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.css-1aumxhk:hover {
+  background-color: #252830 !important;
+  cursor: pointer;
+}
+
+/* Highlight selected radio label */
+.stRadio > div > label > div[data-testid="stMarkdownContainer"] {
+  font-weight: 600;
+  color: #f0f0f0;
+}
