@@ -144,7 +144,9 @@ def local_css(file_name):
 
 # Call the function with correct filename
 
-local_css("style.css")
+current_dir = os.path.dirname(__file__)
+local_css(os.path.join(current_dir, "style.css"))
+
 st.markdown(
     """
     <div class="top-banner">
