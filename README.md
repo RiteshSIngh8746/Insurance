@@ -80,9 +80,7 @@ Ensure the following files are present:
 * `agents/risk_features.pkl`
 * `style.css` (optional)
 
-    4.   Set Your Google API Key  
 
-Edit the `app.py` and replace the API key:
 
 ```python
 try:
@@ -94,7 +92,7 @@ except Exception as e:
 
 > ✅ You may store the key in an environment variable and access it using `os.getenv("GOOGLE_API_KEY")` for security.
 
-    5.   Run the Application  
+    4.   Run the Application  
 
 ``` 
 streamlit run app.py
