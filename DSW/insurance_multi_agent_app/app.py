@@ -72,8 +72,9 @@ def detect_fraud(age, claim_amount, policy_coverage, income, incident_type, dela
 
         # Load model and columns
         current_dir = os.path.dirname(__file__)
-        with open(os.path.join( "fraud_model.pkl"), "rb") as f:
-            model = joblib.load(f)
+        BASE_DIR = os.path.dirname(__file__)  # path of the file where this code lives
+        model_path = os.path.join(BASE_DIR, "fraud_model.pkl")
+        joblib.load(model_path)
         with open(os.path.join("feature_order.pkl"), "rb") as f:
             model_columns = joblib.load(f)
 
