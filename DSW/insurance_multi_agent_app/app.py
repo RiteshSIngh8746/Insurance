@@ -7,9 +7,12 @@ import pandas as pd
 import joblib
 
 # ------------------ CONFIG ------------------
-genai.configure(api_key="AIzaSyCrIlEoMuhKUn-TSfWxKMWTc-iTZxIe5QI")  # Replace with your valid Gemini API key
-model = genai.GenerativeModel("gemini-1.5-flash")
-
+try:
+    genai.configure(api_key="AIzaSyCrIlEoMuhKUn-TSfWxKMWTc-iTZxIe5QI")  # Replace with your valid Gemini API key
+    model = genai.GenerativeModel("gemini-1.5-flash")
+except Exception as e:
+    st.error("⚠️ We're currently experiencing issues with our AI services. Please contact Ritesh Singh  (riteshsingh8746@gmail.com) for support.")
+    st.stop()
 # ------------------ HELPER FUNCTIONS ------------------
 def explain_recommendation(age, gender, marital_status, dependents, income, occupation, health, smoker, alcohol, goal, risk, coverage, duration):
     prompt = (
