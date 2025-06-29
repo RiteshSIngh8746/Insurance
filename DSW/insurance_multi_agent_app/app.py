@@ -39,16 +39,16 @@ def explain_recommendation(age, gender, marital_status, dependents, income, occu
 
 def predict_underwriting_risk(age, income, health, smoker, claim_history):
     try:
-        import pandas as pd
-        import joblib
-        import os
+        base_dir = os.path.dirname(__file__)
+        model_path = os.path.join(base_dir, "risk_model.pkl")
+        features_path = os.path.join(base_dir, "risk_features.pkl")
 
-        # Load model and features
-        with open(os.path.join( "risk_model.pkl"), "rb") as f:
+        with open(model_path, "rb") as f:
             model = joblib.load(f)
-        with open(os.path.join( "risk_features.pkl"), "rb") as f:
+        with open(features_path, "rb") as f:
             model_cols = joblib.load(f)
 
+        
         df = pd.DataFrame([{
             "age": age,
             "income": income,
@@ -66,16 +66,15 @@ def predict_underwriting_risk(age, income, health, smoker, claim_history):
     
 def detect_fraud(age, claim_amount, policy_coverage, income, incident_type, delay_days, doctor_cert, police_rep, months_since_policy):
     try:
-        import pandas as pd
-        import joblib
-        import os
+        base_dir = os.path.dirname(__file__)
+        model_path = os.path.join(base_dir, "fraud_model.pkl")
+        features_path = os.path.join(base_dir, "feature_order.pkl")
 
-        # Load model and columns
-        with open(os.path.join( "fraud_model.pkl"), "rb") as f:
+        with open(model_path, "rb") as f:
             model = joblib.load(f)
-        with open(os.path.join("feature_order.pkl"), "rb") as f:
+        with open(features_path, "rb") as f:
             model_columns = joblib.load(f)
-
+            
         # Create input row
         input_df = pd.DataFrame([{
             'customer_age': age,
@@ -109,15 +108,17 @@ def chat_with_agent(query):
 
  # Internal function to predict risk
 def predict_risk_level(age, income, health, smoker):
-    try:
-        import pandas as pd
-        import joblib
-        with open("agents/risk_model.pkl", "rb") as f:
+    try:        
+        base_dir = os.path.dirname(__file__)
+        model_path = os.path.join(base_dir, "agents", "risk_model.pkl")
+        features_path = os.path.join(base_dir, "agents", "risk_features.pkl")
+
+        with open(model_path, "rb") as f:
             model = joblib.load(f)
-        with open("agents/risk_features.pkl", "rb") as f:
+        with open(features_path, "rb") as f:
             features = joblib.load(f)
 
-        # 👇 claim_history hardcoded as "No"
+# 👇 claim_history hardcoded as "No"
         df = pd.DataFrame([{
             "age": age,
             "income": income,
