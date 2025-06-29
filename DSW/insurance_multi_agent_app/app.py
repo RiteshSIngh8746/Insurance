@@ -4,6 +4,7 @@ import time
 import pickle
 import os
 import pandas as pd
+import joblib
 
 # ------------------ CONFIG ------------------
 genai.configure(api_key="AIzaSyCrIlEoMuhKUn-TSfWxKMWTc-iTZxIe5QI")  # Replace with your valid Gemini API key
